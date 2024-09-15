@@ -1,0 +1,261 @@
+.main {
+    position: relative;
+    background-image: url('../../../image/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.main>div{
+    padding: 20px 10px;
+}
+.bg{
+    background: rgba(0, 0, 0, .5) url('https://imgur.com/cGMLytH.png');
+}
+.page{
+    display: flex;
+    justify-content: center;
+    padding: 80px 0px !important;
+    border-radius: 20px;
+    background-color: rgba(75, 75, 75, 0.5);
+    margin: 20px 10px;
+}
+.page.title{
+    padding: 20px;
+}
+.page.title h1{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    padding: 10px 0px;
+}
+.page.title h2{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    padding: 10px 0px;
+}
+.page.title h3 span:nth-child(2){
+    color: rgb(65, 255, 182);
+}
+h3.online{
+    color: rgb(0, 255, 76) !important;
+}
+h3.offline{
+    color: red !important;
+}
+.page.title h3{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 10px 0px;
+}
+
+
+.page.ip{
+    padding: 60px;
+}
+.page.ip div{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.page.ip button {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #777;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+
+span {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.main1_ipcopier_div{
+    padding: 100px;
+}
+.main1_button{
+    display: flex;
+}
+#more {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+#discord {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+#about {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+#join {
+    padding-top:5rem;
+    margin-top: -5rem;
+}
+
+.socialmedia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.socialmedia > div {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    text-align: center;
+    background: linear-gradient(145deg, #1c1c46, #2e2e75);
+    border-radius: 20px; /* Bo góc nút */
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng hover */
+}
+.socialmedia a {
+    text-decoration: none;
+} 
+.socialmedia img {
+    height: 50px; /* Kích thước hình ảnh */
+    width: auto;
+}
+
+.socialmedia button {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.socialmedia button:hover {
+    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng đổ bóng khi hover */
+}
+
+.socialmedia button span {
+    margin-left: 10px;
+    color: #ffffff; /* Màu chữ */
+}
+
+.socialmedia > div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.mainflex {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.main1 {
+    padding-top: calc(var(--nice-padding) + 2rem);
+    display:flex;
+    width: 100%;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.main1_logo_a {
+    margin-bottom: var(--nice-padding);
+    cursor: default;
+}
+
+.main1_logo {
+    display: block;
+    align-self: center;
+    margin-left:auto;
+    margin-right: auto;
+    transition: all .5s;
+    max-width: 40rem;
+}
+.main1_logo:hover {
+    transform: scale(1.05)
+}
+
+
+.main1_ipcopier {
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 2rem;
+    background-color: var(--accent2_transp);
+    border: 0px;
+    border-radius: var(--roundness);
+    color: white;
+    transition: all .5s;
+    cursor:pointer;
+    position: relative;
+}
+
+.main1_ipcopier:hover {
+    background-color: var(--accent2);
+    transform: scale(1.05)
+}
+
+.main1_ipcopier_text1 {
+    font-size:2rem;
+    font-weight: 800;
+}
+
+.main1_ipcopier_text2 {
+    font-size:1.5rem;
+}
+@media screen and (max-width: 700px) {
+    .page.ip div{
+        flex-direction: column;
+        width: auto;
+    }
+    .page.ip button{
+        margin: 5px 0px;
+    }
+    .page.socialMedia>div{
+        flex-direction: column;
+        width: auto;
+    }
+    .page.socialMedia button{
+        margin: 5px 0px;
+    }
+    .desktop_navbar{
+        display:none;
+    }
+    .main1_button{
+        flex-direction: column;
+    }
+    .main1_ipcopier_div{
+        padding: 20px;
+    }
+    .mobile_navbar{
+        display:flex;
+    }
+    .main1_logo {
+        max-width: 25rem;
+    }
+    .socialmedia{
+        flex-direction: column;
+    }
+    .socialmedia>div{
+        width: 100%;
+        margin: 10px 0px;
+    }
+}

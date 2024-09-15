@@ -1,0 +1,152 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+:root {
+    --nice-padding: 6rem;
+    --roundness: 0.75rem;
+    --accent1: #02db02;
+    --accent2: #05b305;
+    --accent2_transp: #05b30555;
+    --background1: #22282d;
+    --background2: #16191b;
+}
+.pc.nav, .pe.nav{
+    background-color: rgba(34, 40, 45, 1);
+}
+.logos{
+    width: 70px;
+    height: 70px;
+}
+.logo {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul li {
+    padding: 0px 10px;
+    align-self: center;
+}
+.navbar ul li a {
+    text-decoration: none;
+}
+.navbar ul li button, .navbar ul li a button {
+    background-color: #ebda9c;
+    border: 1px solid #FFD54F;
+    color: #222;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.navbar ul li button:hover, .navbar ul li a button:hover {
+    background-color: rgb(240, 240, 95);
+    border: 1px solid #333;
+    transform: translateY(-3px);
+}
+.nav ul li button span,.nav ul li a button span{
+    padding: 2px;
+}
+.user {
+    margin: 13px 0px;
+}
+.pe {
+    display: none;
+}
+.error{
+    font-size: 13px;
+    color: red;
+}
+
+.pc{
+    display: flex;
+    justify-content: space-between;
+}
+.pc .menus ul {
+    list-style: none;
+    display: flex;
+}
+.subMenuUser{
+    position: absolute;
+    flex-direction: column;
+    z-index: 2;
+    top: 70px;
+    right: 0px;
+}
+.subMenuUser a button{
+    width: 100%;
+}
+.username>.btn{
+    padding: 4.5px 10px;
+}
+.subMenuu>.username{
+    padding: 13px 10px;
+}
+#menu {
+    display: none;
+}
+
+#menu.show {
+    display: block;
+}
+.users,
+.usernames {
+    display: none;
+}
+
+.users.show,
+.usernames.show {
+    display: block;
+    width: 100%;
+}
+.users.show:last-child, .usernames.show:last-child{
+    padding-bottom: 10px;
+
+}
+
+@media screen and (max-width: 700px) {
+    .pe {
+        display: block;
+    }
+    .user{
+        margin: 0px;
+    }
+    .navbar ul li {
+        padding: 5px 10px;
+        width: 100%;
+    }
+    #toggleButton {
+        color: white;
+        padding: 26px 28px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    #toggleButton:hover {
+        color: black;
+        background-color: #FFD54F;
+        transform: rotate(90deg);
+    }
+    .navbar ul li a button, .navbar ul li button{
+        width: 100%;
+    }
+    
+    .pc {
+        display: none;
+    }
+}

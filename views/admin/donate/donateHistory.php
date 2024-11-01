@@ -68,6 +68,17 @@
                     <button type="submit" name="btn_filter">Lọc</button>
                 </div>
             </form>
+            <?php if ($role['name'] === "owner"): ?>
+            <a href="add-donate-history"><button>Thêm lịch sử nạp thẻ</button></a>
+            <?php endif ?>
+            <div class='money'>
+                <?php 
+                $total =0;
+                foreach ($donateHistories as $value){
+                    $total +=$value['money_vnd'];
+                } ?>
+                <div class="money">Tổng số tiền mình nhận: <?= $total?></div>
+            </div>
             </div>
             <div class="donate">
                 <div class="card">
@@ -87,6 +98,7 @@
                             <th>Point</th>
                         </tr>
                         <?php if(!empty($donateHistories)): ?>
+                        <?php $total = 0 ?>
                         <?php foreach($donateHistories as $value): ?>
                         <tr>
                             <td><?= $value['username']?></td>
@@ -94,13 +106,14 @@
                             <td><?= $value['message']?></td>
                             <td><?= epochTimeToDateTime($value['date_time'])?></td>
                             <td><?= $value['card_amount']?></td>
-                            <td><?= $value['money_vnd']?></td>
+                            <td class='moneyVND'><?= $value['money_vnd']?></td>
                             <td><?= $value['card_type']?></td>
                             <td><?= $value['type'] ? "Bank" : "Card" ?></td>
                             <td><?= $value['serial']?></td>
                             <td><?= $value['code']?></td>
                             <td><?= $value['point']?></td>
                         </tr>
+                        <?php $total += $value['money_vnd'] ?>
                         <?php endforeach ?>
                         <?php endif ?>
                     </table>

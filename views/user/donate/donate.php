@@ -12,7 +12,7 @@
         <?php require_once "views/user/components/navbar.php" ?>
             <div class="dnt event-section">
                 <h1>Khuyến mãi nạp thẻ</h1>
-                <?php if ($event['expire'] > time()): ?>
+                <?php if (isset($event['expire']) && $event['expire'] > time()): ?>
                     <p><img src="assets/image/hot.gif" alt="Khuyến mãi">Khuyến mãi <strong><?= $event['rate']?>%</strong> đến hết <strong><?= epochTimeToDateTime($event['expire'])?></strong></p>
                 <?php endif ?>
                 <p><strong>Chủ nhật</strong> hàng tuần khuyến mãi <strong>10%</strong></p>
@@ -97,13 +97,21 @@
         <!-- Bank Payment Section -->
         <div class="dnt bank-section">
             <h1>Ngân hàng</h1>
-            <form action="" method="POST" style="display: <?= $qrCodeStatus ? 'none' : 'block' ?>" class="bank-form">
+            <?php if (!$qrCodeStatus): ?>
+            <form action="" method="POST" class="bank-form">
                 <div class="form-group submit-button">
                     <button name="btn_getQR" class="btn-getQR">Lấy mã</button>
                 </div>
             </form>
-            <div class="qr-code-section" style="display: <?= $qrCodeStatus ? 'block' : 'none' ?>">
+            <?php else: ?>
+            <div class="qr-code-section">
                 <img src="<?= $qrCode ?>" alt="QR Code" class="qr-code-img">
+                <div class="warn">
+                    <div>
+                        <p>Lưu ý: Chỉ sử dụng các ứng dụng ngân hàng để chuyển khoản. Không sử dụng các ứng dụng khác ví dụ như Momo, Viettel Money, ...</p>
+                        <p>Sau 30 giây chưa nhận được xu vui lòng báo với STAFF để được hỗ trợ</p>
+                    </div>
+                </div>
                 <div>
                     <table border="1">
                         <tr>
@@ -124,7 +132,9 @@
                         </tr>
                     </table>
                 </div>
+                
             </div>
+            <?php endif ?>
         </div>
 
         <?php require_once "views/user/components/footer.php" ?>

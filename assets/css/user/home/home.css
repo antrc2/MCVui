@@ -1,15 +1,15 @@
-.main {
+/* .main {
     position: relative;
     background-image: url('../../../image/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
+} */
 .main>div{
     padding: 20px 10px;
 }
 .bg{
-    background: rgba(0, 0, 0, .5) url('https://imgur.com/cGMLytH.png');
+    background: rgba(0, 0, 0, .5) url('../../../image/backgroundHome.png');
 }
 .page{
     display: flex;
@@ -140,10 +140,7 @@ span {
     justify-content: flex-start;
 }
 
-.socialmedia button:hover {
-    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng đổ bóng khi hover */
-}
+
 
 .socialmedia button span {
     margin-left: 10px;
@@ -187,7 +184,7 @@ span {
     margin-left:auto;
     margin-right: auto;
     transition: all .5s;
-    max-width: 40rem;
+    width: 55%;
 }
 .main1_logo:hover {
     transform: scale(1.05)
@@ -222,6 +219,9 @@ span {
     font-size:1.5rem;
 }
 @media screen and (max-width: 700px) {
+    .main1_logo{
+        width: 80%;
+    }
     .page.ip div{
         flex-direction: column;
         width: auto;
@@ -239,6 +239,9 @@ span {
     .desktop_navbar{
         display:none;
     }
+    .main1{
+        padding-top: 10px;
+    }
     .main1_button{
         flex-direction: column;
     }
@@ -247,9 +250,6 @@ span {
     }
     .mobile_navbar{
         display:flex;
-    }
-    .main1_logo {
-        max-width: 25rem;
     }
     .socialmedia{
         flex-direction: column;

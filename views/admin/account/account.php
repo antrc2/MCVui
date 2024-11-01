@@ -32,6 +32,7 @@
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
+                    <?php if (($accounts[0])): ?>
                     <?php foreach($accounts as $value): ?>
                     <tr>
                         <td><?= $value['realname']?></td>
@@ -44,6 +45,7 @@
                         <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="delete-account?&username=<?= $value['realname']?>"><button>Xóa</button></a></td>
                     </tr>
                     <?php endforeach ?>
+                    <?php endif ?>
                 </table>
             </div>
         </div>

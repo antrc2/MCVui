@@ -67,8 +67,7 @@
                         if ($username == ""){
                             $accounts = $this->acc->getAllInformationOfUser();
                         } else {
-                            $account = $this->acc->getAllInformationOfUser($username);
-                            $accounts = [$account];
+                            $accounts = $this->acc->getAllInformationOfUser($username);
                         }
                         
                     } else {
@@ -159,7 +158,29 @@
             if (!isset($_SESSION['username'])){
                 header("Location: /login");
             } else {
-                echo "Đổi mật khẩu đang cập nhật";
+                if (isset($_POST['btn_changePassword'])){
+                    $oldPassword = $_POST['oldPassword'];
+                    $newPassword = $_POST['newPassword'];
+                    $reNewPassword = $_POST['reNewPassword'];
+                    if ($newPassword !== $reNewPassword){
+                        require_once "views/user/account/changePassword.php";
+                        echo SweetAlert2("error","Mật khẩu không trùng khớp");
+                    } else {
+                        $account = $this->acc->getInformationOfUser($_SESSION['username']);
+                        $checkedPassword = $this->acc->comparePassword($oldPassword,$account['password']);
+                        if ($checkedPassword){
+                            $changePassword = $this->acc->changePassword($_SESSION['username'],$newPassword);
+                            if ($changePassword){
+                                require_once "views/user/account/changePassword.php";
+                                echo SweetAlert2("success","Đổi mật khẩu thành công");
+                            }
+                        } else {
+                            require_once "views/user/account/changePassword.php";
+                            echo SweetAlert2("error","Sai mật khẩu");
+                        }
+                    }
+                }
+                require_once "views/user/account/changePassword.php";
             }
         }
     }

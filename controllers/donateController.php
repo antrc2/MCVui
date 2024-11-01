@@ -12,10 +12,10 @@
             if ($_SERVER['REQUEST_METHOD'] === "POST"){
                 if (isset($_SESSION['username'])){
                     if (isset($_POST['btn_sendCard'])){
-                        $cardType = $_POST['card_type'];
-                        $cardAmount = $_POST['card_amount'];
-                        $serial = $_POST['serial'];
-                        $code = $_POST['code'];
+                        $cardType = trim($_POST['card_type']);
+                        $cardAmount = trim($_POST['card_amount']);
+                        $serial = trim($_POST['serial']);
+                        $code = trim($_POST['code']);
                         $result = $this->donate->sendCard($code,$serial,$cardType,$cardAmount);
                         if ($result->status === "00"){
                             require_once "views/user/donate/donate.php";
@@ -52,8 +52,8 @@
                         $toDateTime = $_POST['to_date_time'];
                         $tDateTime = $toDateTime;
                         $toDateTime = timestampToEpoch($toDateTime);
-                        $serial = trim($_POST['serial']);
-                        $code = trim($_POST['code']);
+                        $serial = $_POST['serial'];
+                        $code = $_POST['code'];
                         $type = $_POST['type'];
                         $donateHistories = $this->donate->getDonateHistory($username,$fromDateTime,$toDateTime,$serial,$code,$type);
                     } else {
@@ -160,6 +160,39 @@
             } else {
                 $message = "Lỗi khi xóa sự kiện";
                 require_once "views/admin/donate/deleteEvent.php";
+            }
+        }
+        function addDonateHistory(){
+            if (!isset($_SESSION['username'])){
+                header("Location: /login");
+            } else {
+                $acc = new accountModel;
+                $role = $acc->getInformationOfUser($_SESSION['username']);
+                if ($role['name'] === "owner"){
+                    if (isset($_POST['btn_addDonateHistory'])){
+                        $username = $_POST['username'];
+                        $checkUsername = $acc->getInformationOfUser($username);
+                        if (!$checkUsername){
+                            echo SweetAlert2("error", "Không tìm thấy user $username");
+                            require_once "views/admin/donate/addDonateHistory.php";
+                        } else {
+                            $message = $_POST['message'];
+                            $type = 1;
+                            $points = $_POST['points'];
+                            $time = time();
+                            $moneyVND = $_POST['money_vnd'];
+                            $result = $this->donate->addDonateHistory($username, $moneyVND, $time, $message, $type, $points);
+                            if ($result){
+                                header("Location: /donate-history");
+                            } else {
+                                echo "Lỗi";
+                            }
+                        }
+                    }
+                    require_once "views/admin/donate/addDonateHistory.php";
+                } else {
+                    header("Location: /forbidden");
+                }
             }
         }
         

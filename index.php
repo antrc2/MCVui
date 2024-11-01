@@ -25,46 +25,61 @@
     $dashboard = new dashboardController;
     $exchange = new exchangeController;
 
-    $uri = trim(parse_url($_SERVER['REQUEST_URI'])['path'], "/");
+    // Lấy uri và kiểm tra xem khóa 'path' có tồn tại không
+    $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
+    $uri = isset($parsedUrl['path']) ? trim($parsedUrl['path'], "/") : "/";
     $uri = $uri === "" ? "/" : $uri; 
-    if ($uri === "/"){
+
+    if ($uri === "/") {
         $home->home();
-    } elseif ($uri === "login"){
+    } elseif ($uri === "login") {
         $acc->login();
-    } elseif ($uri === "register"){
+    } elseif ($uri === "register") {
         $acc->register();
-    } elseif ($uri === "logout"){
+    } elseif ($uri === "logout") {
         $acc->logout();
-    } elseif ($uri === "donate"){
+    } elseif ($uri === "donate") {
         $donate->donate();
-    } elseif ($uri === "dashboard"){
+    } elseif ($uri === "dashboard") {
         $dashboard->dashboard();
-    } elseif ($uri === "donate-history"){
+    } elseif ($uri === "donate-history") {
         $donate->donateHistory();
-    } elseif ($uri === "account"){
+    } elseif ($uri === "account") {
         $acc->account();
-    } elseif ($uri === "update-account"){
+    } elseif ($uri === "update-account") {
         $acc->updateAccount($_GET['username']);
-    } elseif($uri === "delete-account"){
+    } elseif ($uri === "delete-account") {
         $acc->deleteAccount($_GET['username']);
-    } elseif ($uri === "exchange-history"){
+    } elseif ($uri === "exchange-history") {
         $exchange->exchangeHistory();
-    } elseif ($uri === "profile"){
+    } elseif ($uri === "profile") {
         $acc->profile();
-    } elseif ($uri === "list-event"){
+    } elseif ($uri === "list-event") {
         $donate->listEvent();
-    } elseif ($uri === "add-event"){
+    } elseif ($uri === "add-event") {
         $donate->addEvent();
-    } elseif ($uri === "update-event"){
+    } elseif ($uri === "update-event") {
         $donate->updateEvent($_GET['id']);
-    } elseif ($uri === "delete-event"){
+    } elseif ($uri === "delete-event") {
         $donate->deleteEvent($_GET['id']);
-    } elseif ($uri === "chuyenxu"){
+    } elseif ($uri === "chuyenxu") {
         $exchange->exchange();
-    } elseif ($uri === "change-password"){
+    } elseif ($uri === "change-password") {
         $acc->changePassword();
+    } elseif ($uri === "add-donate-history") {
+        $donate->addDonateHistory();
+    } elseif ($uri === "servers") {
+        $exchange->listServer();
+    } elseif ($uri === "add-server") {
+        $exchange->addServer();
+    } elseif ($uri === "update-server") {
+        $exchange->updateServer($_GET['id']);
+    } elseif ($uri === "delete-server") {
+        $exchange->deleteServer($_GET['id']);
+    } elseif ($uri === "discord"){
+        $home->discord();
     }
-    elseif ($uri === 'forbidden'){
+    elseif ($uri === 'forbidden') {
         $error->forbidden();
     } else {
         $error->notFound();

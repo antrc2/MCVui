@@ -10,7 +10,7 @@
         }
         function sendCard($code,$serial,$cardType,$cardAmount){
             $content = md5(time() . rand(0, 999999).microtime(true));
-            $apikey = "2B513E3FD79CD19BC3084655EF6ABDCB";
+            $apikey = "E425797C643D71CDA14F80B0424CA789";
             $url = "https://thesieutoc.net/chargingws/v2?APIkey=".$apikey."&mathe=".$code."&seri=".$serial."&type=".$cardType."&menhgia=".$cardAmount."&content=".$content;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -120,7 +120,9 @@
             $result = $stmt->fetchAll();
             return $result;
         }
-        
+        function addDonateHistory($username, $moneyVND, $time, $message, $type, $points){
+            return $this->donate->prepare("INSERT INTO donate_history(username,money_vnd,date_time, message, type, point) VALUES('$username',$moneyVND,$time, '$message', $type,$points)")->execute();
+        }
         
         
     }

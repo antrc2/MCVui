@@ -6,10 +6,11 @@
 		$serial = $_POST['serial'];
 		$code = $_POST['pin'];
 		$cardtype = $_POST['card_type'];
-		$moneyVND = $_POST['receive_amount'];
+		// $moneyVND = $_POST['receive_amount'];
 		$sign = $_POST['content'];
 		$message = $_POST['noidung'];
-		$point = intval(intval($_POST['real_amount'])/1000);
+		$moneyVND = $_POST['real_amount'];
+		$point = intval(intval($_POST['receive_amount'])/1000);
 		
 		if ($status === "thanhcong"){
 			$status =1;
@@ -18,7 +19,7 @@
 		} else {
 			$status =3;
 		}
-		$result $conn->query("SELECT * FROM donate_history WHERE sign='$sign'")->fetch();
+		$result = $conn->query("SELECT * FROM donate_history WHERE sign='$sign'")->fetch();
 		$conn->prepare("UPDATE donate_history SET status=$status,serial='$serial',code='$code',card_type ='$cardtype',money_vnd = $moneyVND, message='$message' WHERE sign = '$sign'")->execute();
 		if (date("w") == 0){
             $khuyenMai =10;
@@ -33,6 +34,8 @@
 			} else {
 				$event = $eventResult['rate'];
 			}
+		} else {
+			$event =0;
 		}
 		$point = calculatePointsAfterDiscount($point,$event);
 		$conn->prepare("UPDATE donate_history SET point=$point WHERE sign='$sign'")->execute();

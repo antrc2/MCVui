@@ -4,7 +4,7 @@
         function __construct(){
             $this->acc = database("authme");
         }
-        function computeHash($password, $salt) {
+        function computeHash($password, $salt ){
             // Băm mật khẩu bằng SHA-256
             $firstHash = hash('sha256', $password);
             
@@ -45,12 +45,11 @@
         
         function getAllInformationOfUser($username = "") {
             if ($username == ""){
-                $stmt = $this->acc->query("SELECT * FROM authme JOIN role ON authme.role = role.id ORDER BY realname ASC LIMIT 200");
+                $stmt = $this->acc->query("SELECT * FROM authme JOIN role ON authme.role = role.id ORDER BY realname ASC");
                 return $stmt->fetchAll();
             } else {
-                return $this->getInformationOfUser($username);
+                return $this->acc->query("SELECT * FROM authme JOIN role ON authme.role = role.id WHERE realname LIKE '%$username%' ORDER BY realname ASC")->fetchAll();
             }
-            
         }
         
         function login($username,$password){
@@ -66,6 +65,9 @@
                     return ['status' => FALSE, "message" => "Sai mật khẩu"];
                 }
             }
+        }
+        function checkIssetEmail($email){
+            return $this->acc->query("SELECT * FROM authme WHERE email='$email'")->fetch();
         }
         function register($username,$email,$password){
 
@@ -107,6 +109,10 @@
             } else {
                 return ['status' => FALSE, "message" => "Đã có lỗi xảy ra"];
             }
+        }
+        function changePassword($username,$password){
+            $hashedPassword = $this->computeHash($password, bin2hex(random_bytes(8)));
+            return $this->acc->prepare("UPDATE authme SET password = '$hashedPassword' WHERE realname='$username'")->execute();
         }
         function logout(){
             try {

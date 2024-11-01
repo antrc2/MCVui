@@ -9,7 +9,7 @@
     <meta name="keywords" content="Minecraft, Minecraft server, máy chủ Minecraft, MCVui, Minecraft Việt Nam, Minecraft PE, Minecraft PC">
     <meta name="robots" content="index, follow">
     <?php require_once "views/user/components/head.php" ?>
-    <link rel="canonical" href="https://mcvui.net/"> <!-- Backlink tự nhiên về trang web chính -->
+    <link rel="canonical" href="https://mcvui.net/">
     <link rel="stylesheet" href="assets/css/user/home/home.css">
     <script src="assets/js/user/home/copyText.js"></script>
 </head>
@@ -38,10 +38,10 @@
             </div>
             <div class="socialmedia">
                 <div>
-                    <a href="#">
+                    <a target="_blank" href="https://www.facebook.com/play.mcvui.net">
                         <button>
                             <span><img src="assets/image/facebook.png" alt="Facebook Group Icon"></span>
-                            <span>Group Facebook</span>
+                            <span>Facebook</span>
                         </button>
                     </a>
                 </div>
@@ -49,12 +49,12 @@
                     <a href="#">
                         <button>
                             <span><img src="assets/image/Crafting_Table_JE4_BE3.webp" alt="Crafting Table Minecraft Icon"></span>
-                            <span>Máy chủ</span>
+                            <span><p><strong><?=$online?></strong> trực tuyến</p></span>
                         </button>
                     </a>
                 </div>
                 <div>
-                    <a href="#">
+                    <a target="_blank" href="<?= $discordInviteLink?>">
                         <button>
                             <span><img src="assets/image/Discord-Logo.png" alt="Discord Logo Icon"></span>
                             <span>Discord</span>

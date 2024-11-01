@@ -11,6 +11,7 @@
     --accent2_transp: #05b30555;
     --background1: #22282d;
     --background2: #16191b;
+    --background3: #c1baba;
 }
 .pc.nav, .pe.nav{
     background-color: rgba(34, 40, 45, 1);

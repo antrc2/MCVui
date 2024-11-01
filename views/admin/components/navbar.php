@@ -10,6 +10,7 @@
             <?php if ($role['name'] === "owner"): ?>
             <li><a href="/account"><button>Tài khoản</button></a></li>
             <li><a href="/list-event"><button>Sự kiện nạp thẻ</button></a></li>
+            <li><a href="/servers"><button>Danh sách máy chủ</button></a></li>
             <?php endif; ?>
         </ul>
     </nav>
